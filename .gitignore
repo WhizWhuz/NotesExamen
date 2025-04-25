@@ -1,0 +1,12 @@
+# 🔒 Ignore environment files
+config.env
+
+# 📦 Ignore Node dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# ⚙️ Ignore logs and system junk
+*.log
+.env
+.DS_Store
