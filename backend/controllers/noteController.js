@@ -18,9 +18,9 @@ exports.createNote = async (req, res) => {
 };
 
 // GET - Show all notes from a logged in user
-exports.getNotes = async ({ req, res }) => {
+exports.getAllNotes = async (req, res) => {
   try {
-    const notes = await Note.find({ user: req.user.id }).sort({
+    const notes = await Note.find({ user: req.user?.id || "dummy" }).sort({
       createdAt: -1,
     });
     res.status(200).json({ notes });
@@ -69,5 +69,22 @@ exports.deleteNote = async (req, res) => {
     res
       .status(500)
       .json({ message: "Failed to delete note", error: err.message });
+  }
+};
+
+// GET - Single note by ID
+exports.getNoteById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const note = await Note.findOne({ _id: id, user: req.user.id });
+
+    if (!note) return res.status(404).json({ message: "Note not found!" });
+
+    res.status(200).json({ note });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Failed to fetch note!", error: err.message });
   }
 };
