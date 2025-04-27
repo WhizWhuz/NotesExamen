@@ -1,0 +1,58 @@
+@keyframes bounceFade {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(5px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+}
+
+------ANIMATION------- .formPage {
+  display: flex;
+}
+
+.submitButton {
+  margin-top: 1em;
+  background-color: green;
+}
+
+.title {
+  width: 50em;
+}
+
+.content {
+  width: 50em;
+  height: 30em;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.popUpMessage {
+  width: 10em;
+  height: fit-content;
+  position: absolute;
+  background-color: rgba(6, 208, 6, 0.691);
+  border-radius: 0.5em;
+  bottom: 1%;
+  right: 1%;
+  color: white;
+  animation: bounceFade 4s ease-in-out forwards;
+}

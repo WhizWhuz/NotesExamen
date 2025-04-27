@@ -1,24 +1,19 @@
-import { useState, useEffect } from "react";
-import Home from "./pages/Home";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import LoginPage from "./pages/Login";
+// import RegisterPage from "./pages/Register";
+// import NotesPage from "./pages/NotesPage"; // Your notes page
 
-// const loginUser = async () => {
-//   const res = await fetch("/api/v1/auth/login", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ email, password }),
-//   });
-
-//   const data = await res.json();
-//   if (res.ok) {
-//     localStorage.setItem("token", data.authorization);
-//   }
-// };
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/register" element={<RegisterPage />} /> */}
+        {/* <Route path="/notes" element={<NotesPage />} /> */}
+      </Routes>
+    </Router>
   );
 }
 

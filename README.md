@@ -3,11 +3,13 @@
 ## 📝 Swing Notes
 
 ### Tools
-- Vite
-- Express
-- MongoDB
+
+- Vite 📲
+- Express 🧷
+- MongoDB 🫙
 
 ### Dependencies
+
 - bcryptjs
 - JWT
 - cors
