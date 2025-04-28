@@ -4,8 +4,9 @@ import styles from "../styles/Login.module.scss";
 function Login() {
   return (
     <div className={styles.loginPage}>
-      <p>asdasd</p>
-      <LoginPage />
+      <div className={styles.loginContainer}>
+        <LoginPage />
+      </div>
     </div>
   );
 }

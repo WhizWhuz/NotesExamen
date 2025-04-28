@@ -13,14 +13,20 @@ function Navbar() {
 
   return (
     <nav className={styles.navBar}>
-      <Link to="/notes">Notes</Link>
-      {!isLoggedIn && (
-        <>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </>
+      <div className={styles.leftLinks}>
+        <Link to="/notes">Notes</Link>
+        {!isLoggedIn && (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
+      </div>
+      {isLoggedIn && (
+        <div className={styles.logoutBtn}>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       )}
-      {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
     </nav>
   );
 }

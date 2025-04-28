@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/LoginPage.module.scss";
+import ghicon from "../assets/svgs/github.svg";
+import fbicon from "../assets/svgs/facebook.svg";
+import ggicon from "../assets/svgs/google.svg";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -14,6 +17,7 @@ function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,23 +34,20 @@ function LoginPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.message || "Login failed!");
-        return;
+        throw new Error(data.message || "Something has gone wrong!");
       }
 
-      localStorage.setItem("token", data.authorization.split(" ")[1]);
-      alert("Login successful!");
+      localStorage.setItem("token", data.token);
       navigate("/notes");
     } catch (err) {
-      console.error("Login error:", err);
-      alert("Something went wrong. Try again!");
+      setError(err.message); // Now shows the real backend message!
     }
   };
 
   return (
     <div className={styles.loginPage}>
-      <h2>Login to SwingNotes</h2>
-      <form onSubmit={handleLogin} className={styles.formLogin}>
+      <form onSubmit={handleLogin} className={styles.loginForm}>
+        <h2>Login to SwingNotes</h2>
         <input
           type="email"
           placeholder="Email"
@@ -61,9 +62,21 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <span>
-          <button type="submit" className={styles.submitButton}></button>
-        </span>
+        <p>or login with</p>
+        <div className={styles.icons}>
+          <button>
+            <img src={ghicon} alt="" />
+          </button>
+          <button>
+            <img src={ggicon} alt="" />
+          </button>
+          <button>
+            <img src={fbicon} alt="" />
+          </button>
+        </div>
+        <button type="submit" className={styles.btnSubmit}>
+          Submit
+        </button>
       </form>
     </div>
   );

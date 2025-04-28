@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/RegisterPage.module.scss";
+import ghicon from "../assets/svgs/github.svg";
+import fbicon from "../assets/svgs/facebook.svg";
+import ggicon from "../assets/svgs/google.svg";
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -47,6 +50,7 @@ function RegisterPage() {
   return (
     <div className={styles.regPage}>
       <form onSubmit={handleRegister} className={styles.regForm}>
+        <h2>Register to SwingNotes</h2>
         <input
           type="text"
           placeholder="Your Name"
@@ -68,7 +72,18 @@ function RegisterPage() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-
+        <p>or register with</p>
+        <div className={styles.icons}>
+          <button>
+            <img src={ghicon} alt="" />
+          </button>
+          <button>
+            <img src={ggicon} alt="" />
+          </button>
+          <button>
+            <img src={fbicon} alt="" />
+          </button>
+        </div>
         <button type="submit" className={styles.btnSubmit}>
           Submit
         </button>
