@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/RegisterPage.module.scss";
 
 function RegisterPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/notes");
+    }
+  }, [navigate]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -32,13 +40,12 @@ function RegisterPage() {
       navigate("/notes");
     } catch (err) {
       console.error("Registration failed:", err);
-      alert("Soomething went wrong. Try again!");
+      alert("Something went wrong. Try again!");
     }
   };
 
   return (
     <div className={styles.regPage}>
-      <h2>Register to SwingNotes</h2>
       <form onSubmit={handleRegister} className={styles.regForm}>
         <input
           type="text"
@@ -48,20 +55,23 @@ function RegisterPage() {
           required
         />
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className={styles.btnSubmit}></button>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
+        <button type="submit" className={styles.btnSubmit}>
+          Submit
+        </button>
       </form>
     </div>
   );

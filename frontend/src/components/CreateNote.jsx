@@ -37,38 +37,36 @@ function CreateNote() {
 
   return (
     <>
-      <div className={styles.formPage}>
-        <div className={styles.formContainer}>
-          <h2>Create a New Note</h2>
+      <div className={styles.formContainer}>
+        <h2>Create a New Note</h2>
 
-          {successMessage && (
-            <div className={styles.popUpMessage}>
-              <p>{successMessage}</p>
-            </div>
-          )}
+        {successMessage && (
+          <div className={styles.popUpMessage}>
+            <p>{successMessage}</p>
+          </div>
+        )}
 
-          <form onSubmit={handleSubmit}>
-            <input
-              className={styles.title}
-              type="text"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-            <div></div>
-            <br />
-            <textarea
-              className={styles.content}
-              placeholder="Content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            ></textarea>
-            <br />
-            <button className={styles.submitButton} type="submit">
-              Create note
-            </button>
-          </form>
+        <form onSubmit={handleSubmit}>
+          <input
+            className={styles.title}
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <div className={styles.br} />
+          <textarea
+            className={styles.content}
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+        </form>
+        <div>
+          <button className={styles.submitButton} type="submit">
+            Create note
+          </button>
         </div>
       </div>
     </>

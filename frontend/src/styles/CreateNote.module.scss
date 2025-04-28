@@ -43,6 +43,7 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
+  align-items: center;
 }
 
 .popUpMessage {
@@ -55,4 +56,9 @@
   right: 1%;
   color: white;
   animation: bounceFade 4s ease-in-out forwards;
+}
+
+.br {
+  height: 24px;
+  width: 100%;
 }

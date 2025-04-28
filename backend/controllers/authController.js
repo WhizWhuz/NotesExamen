@@ -4,7 +4,11 @@ const jwt = require("jsonwebtoken");
 
 // POST - Register User
 exports.register = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
+
+  if (!password || typeof password !== "string") {
+    return res.status(400).json({ message: "Password is missing or invalid!" });
+  }
 
   try {
     const existingUser = await User.findOne({ email });
@@ -12,20 +16,34 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: "User already exists!" });
     }
 
-    const hashedPassword = await bcrypt.compare(password, 12);
-    const user = await User.create({ email, password: hashedPassword });
+    const hashedPassword = await bcrypt.hash(password, 12);
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const user = await User.create({ name, email, password: hashedPassword });
+
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
 
     res.status(201).json({
       message: "Registration complete!",
       token,
-      user: { id: user._id, email: user.email },
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
     });
   } catch (err) {
-    res.status(500).json({ message: "Registration failed ", err });
+    console.error("Registration error:", err);
+    res.status(500).json({
+      message: "Registration failed ",
+      error: err.message || "Unknown error",
+    });
   }
 };
 
@@ -49,7 +67,7 @@ exports.login = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h§",
+      expiresIn: "1h",
     });
 
     res.status(200).json({
@@ -61,4 +79,3 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: "Login has failed!", error: err.message });
   }
 };
-

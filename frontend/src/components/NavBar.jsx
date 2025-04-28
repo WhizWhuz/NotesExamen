@@ -1,6 +1,5 @@
-// frontend/src/components/Navbar.jsx
-
 import { Link, useNavigate } from "react-router-dom";
+import styles from "../styles/NavBar.module.scss";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -13,28 +12,14 @@ function Navbar() {
   const isLoggedIn = !!localStorage.getItem("token");
 
   return (
-    <nav
-      style={{
-        padding: "1rem",
-        background: "#eee",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <div>
-        <Link to="/notes" style={{ marginRight: "1rem" }}>
-          Notes
-        </Link>
-        {!isLoggedIn && (
-          <>
-            <Link to="/login" style={{ marginRight: "1rem" }}>
-              Login
-            </Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
-      </div>
-
+    <nav className={styles.navBar}>
+      <Link to="/notes">Notes</Link>
+      {!isLoggedIn && (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
+      )}
       {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
     </nav>
   );

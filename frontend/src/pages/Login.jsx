@@ -1,11 +1,13 @@
 import LoginPage from "../components/LoginPage";
-import RegisterPage from "../components/RegisterPage";
+import styles from "../styles/Login.module.scss";
 
 function Login() {
-  <>
-    <LoginPage />
-    <RegisterPage />
-  </>;
+  return (
+    <div className={styles.loginPage}>
+      <p>asdasd</p>
+      <LoginPage />
+    </div>
+  );
 }
 
 export default Login;
