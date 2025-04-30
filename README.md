@@ -1,20 +1,29 @@
-# Frontend and Backend project
+# Frontend and Backend Project
 
 ## 📝 Swing Notes
 
-### Tools
+### Tools ⚙️
 
-- Vite 📲
-- Express 🧷
-- MongoDB 🫙
+- **Vite** ⚡️
 
-### Dependencies
+- **Express** 🚂
 
-- bcryptjs
-- JWT
-- cors
-- dotenv
-- mongoose
-- morgan
-- swagger
-- nodemon
+- **MongoDB** 🍃
+
+### Frontend 🎨
+
+- **BrowserRouter** 🧭
+
+- **SASS Modules** 🎀
+
+### Backend 🛠️
+
+- **bcryptjs** 🔐
+
+- **jsonwebtoken** 🪪
+- **cors** 🌐
+- **dotenv** 🧪
+- **mongoose** 🐁
+- **morgan** 📋
+- **swagger** 📚
+- **nodemon** 🔁
