@@ -1,11 +1,13 @@
 import LoginPage from "../components/LoginPage";
+import RegisterPage from "../components/RegisterPage";
 import styles from "../styles/Login.module.scss";
 
-function Login() {
+function Login({ setIsLoggedIn }) {
   return (
     <div className={styles.loginPage}>
       <div className={styles.loginContainer}>
-        <LoginPage />
+        <RegisterPage setIsLoggedIn={setIsLoggedIn} />
+        <LoginPage setIsLoggedIn={setIsLoggedIn} />
       </div>
     </div>
   );

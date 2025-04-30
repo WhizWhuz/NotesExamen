@@ -5,7 +5,7 @@ import ghicon from "../assets/svgs/github.svg";
 import fbicon from "../assets/svgs/facebook.svg";
 import ggicon from "../assets/svgs/google.svg";
 
-function RegisterPage() {
+function RegisterPage({ setIsLoggedIn }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,8 +38,10 @@ function RegisterPage() {
         return;
       }
 
-      localStorage.setItem("token", data.token);
       alert("Registration successful!");
+      navigate("/notes");
+      localStorage.setItem("token", data.token);
+      setIsLoggedIn(true); // 🥷 tell Notes page to hide the overlay
       navigate("/notes");
     } catch (err) {
       console.error("Registration failed:", err);
@@ -48,47 +50,45 @@ function RegisterPage() {
   };
 
   return (
-    <div className={styles.regPage}>
-      <form onSubmit={handleRegister} className={styles.regForm}>
-        <h2>Register to SwingNotes</h2>
-        <input
-          type="text"
-          placeholder="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <p>or register with</p>
-        <div className={styles.icons}>
-          <button>
-            <img src={ghicon} alt="" />
-          </button>
-          <button>
-            <img src={ggicon} alt="" />
-          </button>
-          <button>
-            <img src={fbicon} alt="" />
-          </button>
-        </div>
-        <button type="submit" className={styles.btnSubmit}>
-          Submit
+    <form onSubmit={handleRegister} className={styles.regForm}>
+      <h2>Register to SwingNotes</h2>
+      <input
+        type="text"
+        placeholder="Your Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <p>or register with</p>
+      <div className={styles.icons}>
+        <button>
+          <img src={ghicon} alt="" />
         </button>
-      </form>
-    </div>
+        <button>
+          <img src={ggicon} alt="" />
+        </button>
+        <button>
+          <img src={fbicon} alt="" />
+        </button>
+      </div>
+      <button type="submit" className={styles.btnSubmit}>
+        Submit
+      </button>
+    </form>
   );
 }
 

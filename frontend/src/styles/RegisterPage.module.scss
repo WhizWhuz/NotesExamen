@@ -1,20 +1,14 @@
-.regPage {
-  display: flex;
-}
-
 .regForm {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  background-color: #547792;
-  border-radius: 1em;
-  padding: 2em;
-  width: 20em;
+  background-color: #26b46b;
+  width: 100%;
   align-items: center;
-  border: 2px solid #ecefca;
+  border-right: 1px solid #ecefca;
 
   & input {
-    width: 100%;
+    width: 80%;
     height: 2.5em;
     text-align: center;
   }

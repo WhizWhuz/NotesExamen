@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react";
+import styles from "../styles/Home.module.scss";
 
 function Home() {
-  const [message, setMessage] = useState("Backend Hellooo");
-
-  useEffect(() => {
-    fetch("http://localhost:4000/api/v1/notes")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(" 👽 Response from the Backend:", data);
-        setMessage("Connected to the Backend 😂");
-      })
-      .catch((err) => {
-        console.error("Failed to connect", err);
-        setMessage("Could not reach backend");
-      });
-  }, []);
-
-  return <h1>{message}</h1>;
+  return (
+    <div className={styles.homePage}>
+      <div className={styles.homeContainer}>
+        <div>
+          <h1>SwingNotes</h1>
+          <h2>Welcome to SwingNotes!</h2>
+        </div>
+        <p>
+          A simple and powerful tool to write, manage, and protect your notes
+          across devices. Create an account, login securely, and start noting
+          your ideas with ease.
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default Home;

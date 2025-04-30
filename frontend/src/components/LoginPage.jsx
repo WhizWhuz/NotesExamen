@@ -5,11 +5,11 @@ import ghicon from "../assets/svgs/github.svg";
 import fbicon from "../assets/svgs/facebook.svg";
 import ggicon from "../assets/svgs/google.svg";
 
-function LoginPage() {
+function LoginPage({ setIsLoggedIn, setIsOpened }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");token
     if (token) {
       navigate("/notes");
     }
@@ -38,47 +38,47 @@ function LoginPage() {
       }
 
       localStorage.setItem("token", data.token);
+      setIsLoggedIn(true); // 🥷 tell Notes page to hide the overlay
       navigate("/notes");
+      setIsOpened(false);
     } catch (err) {
       setError(err.message); // Now shows the real backend message!
     }
   };
 
   return (
-    <div className={styles.loginPage}>
-      <form onSubmit={handleLogin} className={styles.loginForm}>
-        <h2>Login to SwingNotes</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <p>or login with</p>
-        <div className={styles.icons}>
-          <button>
-            <img src={ghicon} alt="" />
-          </button>
-          <button>
-            <img src={ggicon} alt="" />
-          </button>
-          <button>
-            <img src={fbicon} alt="" />
-          </button>
-        </div>
-        <button type="submit" className={styles.btnSubmit}>
-          Submit
+    <form onSubmit={handleLogin} className={styles.loginForm}>
+      <h2>Login to SwingNotes</h2>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <p>or login with</p>
+      <div className={styles.icons}>
+        <button>
+          <img src={ghicon} alt="" />
         </button>
-      </form>
-    </div>
+        <button>
+          <img src={ggicon} alt="" />
+        </button>
+        <button>
+          <img src={fbicon} alt="" />
+        </button>
+      </div>
+      <button type="submit" className={styles.btnSubmit}>
+        Submit
+      </button>
+    </form>
   );
 }
 

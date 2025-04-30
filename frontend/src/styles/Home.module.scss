@@ -1,0 +1,24 @@
+.homePage {
+  background-color: rgb(169, 169, 255);
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1,
+h3,
+h4,
+p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5em;
+  justify-content: center;
+}

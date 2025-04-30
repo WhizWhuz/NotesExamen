@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/CreateNote.module.scss";
 
-function CreateNote() {
+function CreateNote({ refreshNotes }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -26,9 +26,9 @@ function CreateNote() {
 
       setTitle("");
       setContent("");
-
       setSuccessMessage("Note successfully created! ✅");
 
+      refreshNotes();
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
       console.error("Failed to create note", err);

@@ -1,11 +1,11 @@
 import RegisterPage from "../components/RegisterPage";
 import styles from "../styles/Register.module.scss";
 
-function Register() {
+function Register({ setIsLoggedIn }) {
   return (
     <div className={styles.registerPage}>
       <div className={styles.registerContainer}>
-        <RegisterPage />
+        <RegisterPage setIsLoggedIn={setIsLoggedIn} />
       </div>
     </div>
   );

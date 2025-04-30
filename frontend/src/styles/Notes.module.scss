@@ -1,5 +1,42 @@
 .notesPage {
   width: 100vw;
   display: flex;
+  flex-direction: column; // 🌸 Add this
+  align-items: center; // 🌸 Center children
+  padding: 2em; // 🌸 Optional, better spacing
+}
+
+.floating {
+  position: absolute;
+}
+
+.hidden {
+  background-color: rgba(0, 0, 0, 0.282);
+  position: absolute;
+  display: flex;
   justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.notesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.noteCard {
+  background: #547792;
+  border: 2px solid #ecefca;
+  border-radius: 0.5em;
+  width: 250px;
+  padding: 1em;
+  text-align: left;
+  color: white;
+}
+
+.createNoteSection {
+  margin-bottom: 3em;
 }
