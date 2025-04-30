@@ -6,16 +6,17 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Notes from "./pages/Notes";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn && window.location.pathname === "/login") {
       navigate("/notes");
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn]);
 
   return (
     <>
@@ -36,6 +37,7 @@ function App() {
             <Notes isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           }
         />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   );

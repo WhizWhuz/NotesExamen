@@ -62,12 +62,12 @@ function CreateNote({ refreshNotes }) {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
+          <div>
+            <button className={styles.submitButton} type="submit">
+              Create note
+            </button>
+          </div>
         </form>
-        <div>
-          <button className={styles.submitButton} type="submit">
-            Create note
-          </button>
-        </div>
       </div>
     </>
   );

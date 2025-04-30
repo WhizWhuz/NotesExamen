@@ -11,7 +11,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false); // 🥷 reflect logout in UI
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -19,6 +19,8 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
       <div className={styles.leftLinks}>
         <Link to="/">Home</Link>
         <Link to="/notes">Notes</Link>
+
+        {isLoggedIn && <Link to="/profile">Profile</Link>}
         {!isLoggedIn && (
           <>
             <p

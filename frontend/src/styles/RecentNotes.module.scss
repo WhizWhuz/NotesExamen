@@ -1,0 +1,59 @@
+.recentContainer {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 6em;
+}
+
+.recentNotes {
+  width: 13em;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.titleContainer {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.37);
+  display: flex;
+  justify-content: center;
+  height: 2em;
+  align-items: center;
+  button {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0;
+    position: absolute;
+    margin-left: 11em;
+    padding-block: 0px;
+    padding-inline: 0px;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  width: 10em;
+  height: 100%;
+  flex-grow: 2;
+}
+
+.content {
+  color: black;
+  overflow-y: auto;
+  word-break: break-word;
+  white-space: normal;
+  padding-right: 0.5em;
+  // text-overflow: ellipsis;
+  // display: -webkit-box;
+  // -webkit-line-clamp: 4;
+  // -webkit-box-orient: vertical;
+}
+
+.content::-webkit-scrollbar {
+  width: 0.4em;
+  margin-left: 2em;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
+}

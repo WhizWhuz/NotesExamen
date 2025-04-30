@@ -8,13 +8,6 @@ import ggicon from "../assets/svgs/google.svg";
 function LoginPage({ setIsLoggedIn, setIsOpened }) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");token
-    if (token) {
-      navigate("/notes");
-    }
-  }, [navigate]);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

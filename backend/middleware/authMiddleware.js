@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
       return res.status(401).json({ message: "User not found." });
     }
 
-    req.user = user; // attach user to request
+    req.user = { id: user._id };
     next(); // move forward
   } catch (err) {
     return res.status(403).json({ message: "Invalid or expired token." });

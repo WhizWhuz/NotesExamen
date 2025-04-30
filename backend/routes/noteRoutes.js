@@ -3,17 +3,15 @@ const router = express.Router();
 const noteController = require("../controllers/noteController");
 const authMiddleware = require("../middleware/authMiddleware");
 
-router.use(authMiddleware);
-
 router
   .route("/")
-  .post(noteController.createNote)
-  .get(noteController.getAllNotes);
+  .post(authMiddleware, noteController.createNote)
+  .get(authMiddleware, noteController.getAllNotes);
 
 router
   .route("/:id")
-  .get(noteController.getNoteById)
-  .put(noteController.updateNote)
-  .delete(noteController.deleteNote);
+  .get(authMiddleware, noteController.getNoteById)
+  .put(authMiddleware, noteController.updateNote)
+  .delete(authMiddleware, noteController.deleteNote);
 
 module.exports = router;
