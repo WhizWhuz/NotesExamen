@@ -2,12 +2,13 @@ const Note = require("../models/Note");
 
 // POST - Create a note
 exports.createNote = async (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, color } = req.body;
 
   try {
     const note = await Note.create({
       title,
       content,
+      color,
       user: req.user.id,
     });
 

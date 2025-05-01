@@ -2,8 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/NavBar.module.scss";
 import { useState } from "react";
 import LoginPage from "./LoginPage";
+import profile from "../assets/svgs/person.svg";
 
-function Navbar({ isLoggedIn, setIsLoggedIn }) {
+function Navbar({ isLoggedIn, setIsLoggedIn, user }) {
   const navigate = useNavigate();
 
   const [isOpened, setIsOpened] = useState(false);
@@ -18,9 +19,8 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
     <nav className={styles.navBar}>
       <div className={styles.leftLinks}>
         <Link to="/">Home</Link>
-        <Link to="/notes">Notes</Link>
+        <Link to="/notes">Create Note</Link>
 
-        {isLoggedIn && <Link to="/profile">Profile</Link>}
         {!isLoggedIn && (
           <>
             <p
@@ -46,12 +46,23 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
         >
           <LoginPage setIsOpened={setIsOpened} setIsLoggedIn={setIsLoggedIn} />
           <p className={styles.links}>
-            Don't have an account? <Link to="/register">Register Here</Link>
+            Don't have an account?{" "}
+            <Link to="/register" onClick={() => setIsOpened(false)}>
+              Register Here
+            </Link>
           </p>
         </div>
       </div>
       {isLoggedIn && (
         <div className={styles.logoutBtn}>
+          {isLoggedIn && user && (
+            <>
+              <div className={styles.one}>
+                <img src={profile} alt="" /> {user.name}
+              </div>
+              <Link to="/profile">Profile</Link>
+            </>
+          )}
           <button onClick={handleLogout}>Logout</button>
         </div>
       )}

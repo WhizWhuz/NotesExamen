@@ -10,6 +10,7 @@
   width: 13em;
   height: 100%;
   border: 1px solid black;
+  margin-left: 0.5em;
 }
 
 .titleContainer {
@@ -31,7 +32,6 @@
 
 .contentContainer {
   display: flex;
-  width: 10em;
   height: 100%;
   flex-grow: 2;
 }

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 @keyframes bounceFade {
   0% {
     transform: translateY(0px);
@@ -12,16 +16,17 @@
     opacity: 1;
   }
   80% {
-    transform: translateY(5px);
+    transform: translateY(120px);
     opacity: 0.5;
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(70px);
     opacity: 0;
   }
 }
 
-------ANIMATION------- .formPage {
+// ------ANIMATION-------
+.formPage {
   display: flex;
 }
 
@@ -31,12 +36,16 @@
 }
 
 .title {
-  width: 70em;
+  color: white;
+  font-size: 1.2em;
 }
 
 .content {
-  width: 70em;
-  height: 30em;
+  width: 25em;
+  height: 10em;
+  font-size: 2em;
+  align-self: center;
+  color: black;
 }
 
 .formContainer {
@@ -46,13 +55,35 @@
   align-items: center;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 .popUpMessage {
+  text-align: center;
   width: 10em;
   height: fit-content;
   position: absolute;
+  padding: 0.5em;
   background-color: rgba(6, 208, 6, 0.691);
   border-radius: 0.5em;
-  bottom: 1%;
+  bottom: 5%;
+  right: 1%;
+  color: white;
+  z-index: 100;
+  animation: bounceFade 4s ease-in-out forwards;
+}
+.popUpMessageNeg {
+  width: 10em;
+  height: fit-content;
+  width: fit-content;
+  position: absolute;
+  padding: 0.5em;
+  background-color: rgba(208, 6, 6, 0.691);
+  border-radius: 0.5em;
+  z-index: 100;
+  bottom: 5%;
   right: 1%;
   color: white;
   animation: bounceFade 4s ease-in-out forwards;

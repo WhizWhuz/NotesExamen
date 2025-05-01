@@ -31,7 +31,7 @@ function LoginPage({ setIsLoggedIn, setIsOpened }) {
       }
 
       localStorage.setItem("token", data.token);
-      setIsLoggedIn(true); // 🥷 tell Notes page to hide the overlay
+      setIsLoggedIn(true);
       navigate("/notes");
       setIsOpened(false);
     } catch (err) {

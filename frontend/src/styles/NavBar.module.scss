@@ -17,10 +17,23 @@
   gap: 1em;
   padding: 0.5em;
 }
+.one {
+  display: flex;
+  gap: 0.2em;
+  align-items: center;
+  img {
+    background-color: grey;
+    border-radius: 2em;
+    padding: 0.2em;
+  }
+}
 
 .logoutBtn {
   position: relative;
   right: 1%;
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }
 
 .loginPopup {

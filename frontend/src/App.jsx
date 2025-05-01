@@ -18,9 +18,38 @@ function App() {
     }
   }, [isLoggedIn]);
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      try {
+        const res = await fetch("http://localhost:4000/api/v1/auth/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await res.json();
+        if (res.ok) setUser(data.user);
+      } catch (err) {
+        console.error("Failed to fetch user:", err.message);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <>
-      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <NavBar
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setUser={setUser}
+        user={user}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

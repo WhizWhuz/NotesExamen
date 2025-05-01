@@ -1,3 +1,26 @@
+@keyframes bounceFade {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(150px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(150px);
+    opacity: 0;
+  }
+}
+
 .notesPage {
   width: 100vw;
   display: flex;
@@ -8,11 +31,10 @@
 }
 
 .recentContainer {
-  height: 10em;
+  height: 12em;
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 0.3em;
   background-color: rgba(255, 255, 255, 0.084);
   bottom: 0%;
   width: 100%;
@@ -51,4 +73,33 @@
 
 .createNoteSection {
   margin-bottom: 3em;
+}
+
+.popUpMessage {
+  text-align: center;
+  width: 10em;
+  height: fit-content;
+  position: absolute;
+  padding: 0.5em;
+  background-color: rgba(6, 208, 6, 0.691);
+  border-radius: 0.5em;
+  bottom: 5%;
+  right: 1%;
+  color: white;
+  z-index: 100;
+  animation: bounceFade 4s ease-in-out forwards;
+}
+.popUpMessageNeg {
+  width: 10em;
+  height: fit-content;
+  width: fit-content;
+  position: absolute;
+  padding: 0.5em;
+  background-color: rgba(208, 6, 6, 0.691);
+  border-radius: 0.5em;
+  z-index: 100;
+  bottom: 5%;
+  right: 1%;
+  color: white;
+  animation: bounceFade 4s ease-in-out forwards;
 }

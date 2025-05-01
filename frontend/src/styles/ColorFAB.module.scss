@@ -1,0 +1,42 @@
+.fabContainer {
+  position: fixed;
+  top: 4rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+}
+
+.fabButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.colorDot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

@@ -7,6 +7,8 @@ import Login from "./Login";
 function Notes({ isLoggedIn, setIsLoggedIn }) {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [failureMessage, setFailureMessage] = useState("");
 
   // ✅ Fetch notes from backend
   const fetchNotes = async () => {
@@ -43,16 +45,6 @@ function Notes({ isLoggedIn, setIsLoggedIn }) {
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     .slice(0, 9);
 
-  if (!isLoggedIn) {
-    return (
-      <div className={styles.hidden}>
-        <div className={styles.hiddeninside}>
-          <Login setIsLoggedIn={setIsLoggedIn} />
-        </div>
-      </div>
-    );
-  }
-
   const deleteNote = async (id) => {
     const token = localStorage.getItem("token");
 
@@ -68,15 +60,27 @@ function Notes({ isLoggedIn, setIsLoggedIn }) {
         const data = await res.json();
         throw new Error(data.message || "Failed to delete note.");
       }
-
+      setSuccessMessage("Note successfully deleted! ✅");
+      setFailureMessage("");
+      setTimeout(() => setSuccessMessage(""), 3000);
       await fetchNotes(); // refresh after delete
     } catch (err) {
       console.error("Delete error:", err.message);
+      setFailureMessage("Note didn't get deleted! ❌");
+      setSuccessMessage("");
+      setTimeout(() => setFailureMessage(""), 3000);
     }
   };
   return (
     <div className={styles.notes}>
       <div className={styles.notesPage}>
+        {!isLoggedIn && (
+          <div className={styles.hidden}>
+            <div className={styles.hiddeninside}>
+              <Login setIsLoggedIn={setIsLoggedIn} />
+            </div>
+          </div>
+        )}
         <CreateNote refreshNotes={fetchNotes} />
       </div>
       <div className={styles.recentContainer}>
@@ -88,6 +92,16 @@ function Notes({ isLoggedIn, setIsLoggedIn }) {
           recentNotes.map((note) => (
             <RecentNotes key={note._id} note={note} onDelete={deleteNote} />
           ))
+        )}
+        {successMessage && (
+          <div className={styles.popUpMessage}>
+            <p>{successMessage}</p>
+          </div>
+        )}
+        {failureMessage && (
+          <div className={styles.popUpMessageNeg}>
+            <p>{failureMessage}</p>
+          </div>
         )}
       </div>
     </div>

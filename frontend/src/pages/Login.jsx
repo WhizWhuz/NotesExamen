@@ -4,11 +4,6 @@ import RegisterPage from "../components/RegisterPage";
 import styles from "../styles/Login.module.scss";
 
 function Login({ setIsLoggedIn }) {
-  const navigate = useNavigate;
-  localStorage.setItem("token", data.token);
-  setIsLoggedIn(true);
-  navigate("/notes");
-
   return (
     <div className={styles.loginPage}>
       <div className={styles.loginContainer}>
