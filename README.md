@@ -19,7 +19,7 @@
 ### Backend 🛠️
 
 - **bcryptjs** 🔐
-
+- **swagger** 😎
 - **jsonwebtoken** 🪪
 - **cors** 🌐
 - **dotenv** 🧪

@@ -1,13 +1,35 @@
-.recentContainer {
-  height: 100%;
+.Wrapper {
   display: flex;
-  align-items: center;
-  gap: 0.3em;
+}
+
+// ----------
+
+.recentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+  background-color: orange;
+  height: 56em;
+  width: 50%;
+  overflow: auto;
+}
+
+.allnotes {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+
+  & p {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+  }
 }
 
 .recentNotes {
-  width: 13em;
-  height: 100%;
+  flex: 0 0 calc(33.33% - 1em); // ✅ exactly 3 per row
+  max-width: calc(33.33% - 1em);
   border: 1px solid black;
   border-radius: 1em;
 }
@@ -25,7 +47,6 @@
     padding: 0;
     padding-block: 0px;
     padding-inline: 0px;
-    position: absolute;
   }
 }
 

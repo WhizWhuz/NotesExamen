@@ -1,3 +1,6 @@
+const YAML = require("yamljs");
+const swaggerUi = require("swagger-ui-express");
+
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -13,6 +16,9 @@ app.use(morgan("dev"));
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/notes", noteRoutes);
+
+const swaggerDocument = YAML.load("../docs/swagger.yaml");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res, next) => {
   res.status(404).json({ message: "Route not found" });

@@ -53,8 +53,9 @@ function CreateNote({ refreshNotes }) {
 
   return (
     <>
-      <ColorFAB onSelectColor={(color) => setSelectedColor(color)} />
-
+      <div className={styles.fabWrapper}>
+        <ColorFAB onSelectColor={(color) => setSelectedColor(color)} />
+      </div>
       <div className={styles.formContainer}>
         <h2>Create a New Note</h2>
 
@@ -70,24 +71,27 @@ function CreateNote({ refreshNotes }) {
         )}
 
         <form onSubmit={handleSubmit}>
-          <input
-            className={styles.title}
-            type="text"
-            style={{ backgroundColor: `${selectedColor}` }}
-            placeholder="Title..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-          <textarea
-            className={styles.content}
+          <div
             style={{ backgroundColor: selectedColor }}
-            placeholder="What's on your mind..."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          ></textarea>
-          <div>
+            className={styles.formWrapper}
+          >
+            <input
+              className={styles.title}
+              type="text"
+              placeholder="Title..."
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+            <textarea
+              className={styles.content}
+              placeholder="What's on your mind..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            ></textarea>
             <p>{content.length} / 250</p>
+          </div>
+          <div className={styles.downbut}>
             <button className={styles.submitButton} type="submit">
               Create note
             </button>

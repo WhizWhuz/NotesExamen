@@ -18,7 +18,6 @@ function ColorFAB({ onSelectColor }) {
     clickSound.currentTime = 0;
     clickSound.play();
     onSelectColor(color);
-    setIsOpen(false);
   };
   return (
     <div className={styles.fabContainer}>
@@ -42,18 +41,17 @@ function ColorFAB({ onSelectColor }) {
               className={styles.colorDot}
               style={{ backgroundColor: color }}
               initial={{ opacity: 0, y: -30, scale: 0.8 }}
-              animate={{ opacity: 1, y: (index + 1) * 55, scale: 1 }}
-              exit={{ opacity: 0, y: 0, scale: 0.6 }}
+              animate={{ opacity: 1, y: (index + 1) * 40, scale: 1 }}
+              exit={{ opacity: 0, y: 0, scale: 0.1 }}
               transition={{
                 type: "spring",
                 stiffness: 75, // 🧘 softer bounce
                 damping: 30, // 💧 more fluid stop
-                mass: 0.5, // ⚖️ slower motion
+                mass: 1.0, // ⚖️ slower motion
                 delay: index * 0.4, // 🌊 gentle cascading
               }}
               onClick={() => {
                 onSelectColor(color);
-                setIsOpen(false);
                 handleColorClick(color);
               }}
             />
