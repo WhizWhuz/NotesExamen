@@ -31,5 +31,4 @@
 - **dotenv** 🧪
 - **mongoose** 🐁
 - **morgan** 📋
-- **swagger** 📚
 - **nodemon** 🔁
