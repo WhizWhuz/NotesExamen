@@ -1,10 +1,30 @@
+@keyframes morph {
+  0% {
+    border-radius: 1em 4em;
+    border: 5px solid rgba(255, 255, 255, 0.335);
+  }
+  50% {
+    border-radius: 4em 1em;
+    border: 5px solid rgba(255, 255, 255, 0.335);
+  }
+  100% {
+    border-radius: 1em 4em;
+    border: 5px solid rgba(255, 255, 255, 0.335);
+  }
+}
+
 .homePage {
-  background-color: rgb(169, 169, 255);
-  height: 100%;
+  height: 100vh;
   width: 100vw;
   display: flex;
-  align-items: center;
+  margin-top: 4em;
   justify-content: center;
+  position: relative;
+
+  & :hover {
+    border-radius: 4em 1em;
+    animation: morph 4s ease-in-out infinite;
+  }
 }
 
 h1,
@@ -21,4 +41,9 @@ p {
   align-items: center;
   gap: 5em;
   justify-content: center;
+  height: fit-content;
+  padding: 4em 1em;
+  background-color: rgb(147, 63, 133);
+  border-radius: 1em 4em;
+  border: 5px solid rgba(255, 255, 255, 0.335);
 }

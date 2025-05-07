@@ -11,7 +11,7 @@ function Home() {
         <p>
           A simple and powerful tool to write, manage, and protect your notes
           across devices. Create an account, login securely, and start noting
-          your ideas with ease.
+          your ideas on colorful notes!
         </p>
       </div>
     </div>

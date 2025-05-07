@@ -1,5 +1,9 @@
 # Frontend and Backend Project
 
+## Video examinaton📼
+
+### https://youtu.be/BE6R0nuC0hc
+
 ## 📝 Swing Notes
 
 ### Tools ⚙️
@@ -15,6 +19,8 @@
 - **BrowserRouter** 🧭
 
 - **SASS Modules** 🎀
+
+- **Framer Motion** 🎞️
 
 ### Backend 🛠️
 

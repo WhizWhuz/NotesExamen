@@ -7,7 +7,9 @@ function CreateNote({ refreshNotes }) {
   const [content, setContent] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [failureMessage, setFailureMessage] = useState("");
-  const [selectedColor, setSelectedColor] = useState("#F7C873"); // default
+
+  //! Färgen \\
+  const [selectedColor, setSelectedColor] = useState("#F7C873");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +52,7 @@ function CreateNote({ refreshNotes }) {
       setTimeout(() => setFailureMessage(""), 3000);
     }
   };
+  
 
   return (
     <>
@@ -57,7 +60,6 @@ function CreateNote({ refreshNotes }) {
         <ColorFAB onSelectColor={(color) => setSelectedColor(color)} />
       </div>
       <div className={styles.formContainer}>
-        <h2>Create a New Note</h2>
 
         {successMessage && (
           <div className={styles.popUpMessage}>

@@ -34,3 +34,26 @@
     }
   }
 }
+
+.black {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: black;
+}
+
+.regSuccess {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50rem;
+  height: 10rem;
+  background-color: rgba(0, 255, 0, 0.837);
+  padding: 2rem;
+  top: 30%;
+  font-size: 3em;
+  border-radius: 2rem;
+  border: 2px solid black;
+}

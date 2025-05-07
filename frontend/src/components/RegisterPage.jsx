@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/RegisterPage.module.scss";
 import ghicon from "../assets/svgs/github.svg";
@@ -18,6 +18,7 @@ function RegisterPage({ setIsLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [alert, setAlert] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -38,11 +39,10 @@ function RegisterPage({ setIsLoggedIn }) {
         return;
       }
 
-      alert("Registration successful!");
-      navigate("/notes");
+      setAlert(true);
       localStorage.setItem("token", data.token);
-      setIsLoggedIn(true); // 🥷 tell Notes page to hide the overlay
-      navigate("/notes");
+      setIsLoggedIn(true);
+      setTimeout(() => navigate("/notes"), 3000);
     } catch (err) {
       console.error("Registration failed:", err);
       alert("Something went wrong. Try again!");
@@ -51,6 +51,13 @@ function RegisterPage({ setIsLoggedIn }) {
 
   return (
     <form onSubmit={handleRegister} className={styles.regForm}>
+      {alert && (
+        <>
+          <div className={styles.regSuccess}>
+            <h3>Registration successful!</h3>
+          </div>
+        </>
+      )}
       <h2>Register to SwingNotes</h2>
       <input
         type="text"

@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import RecentNotes from "../components/RecentNotes";
 import styles from "../styles/Profile.module.scss";
+import profile from "../assets/svgs/person.svg";
 
 function Profile() {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -19,6 +21,8 @@ function Profile() {
         });
 
         const data = await res.json();
+        console.log(data.user.email);
+        console.log(data.user.name);
         if (res.ok) setUser(data.user);
       } catch (err) {
         console.error("User fetch failed:", err.message);
@@ -82,20 +86,55 @@ function Profile() {
     }
   };
 
+  const recentNotes = [...notes]
+    .filter((note) =>
+      note.content.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 9);
+
+  const filteredNotes = allNotes.filter((note) =>
+    note.content.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className={styles.Wrapper}>
       <div className={styles.recentContainer}>
-        {/* <div className={styles.allnotes}>
+        <div className={styles.notesContainer}>
+          {/* <div className={styles.allnotes}>
           <p>{allNotes.length}</p>
         </div> */}
+          {loading ? (
+            <p>Loading notes...</p>
+          ) : filteredNotes.length === 0 ? (
+            <p>You have no notes.</p>
+          ) : (
+            filteredNotes.map((note) => (
+              <RecentNotes key={note._id} note={note} onDelete={deleteNote} />
+            ))
+          )}
+        </div>
+      </div>
+      <input
+        className={styles.searcharea}
+        type="text"
+        placeholder="Search note content..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className={styles.profileContainer}>
         {loading ? (
-          <p>Loading notes...</p>
-        ) : allNotes.length === 0 ? (
-          <p>You have no notes.</p>
+          <p>Loading profile...</p>
         ) : (
-          allNotes.map((note) => (
-            <RecentNotes key={note._id} note={note} onDelete={deleteNote} />
-          ))
+          <>
+            <div className={styles.profile}>
+              <img className={styles.profileImg} src={profile} alt="" />
+              <h1>{user?.name}</h1>
+            </div>
+            <div className={styles.profile}>
+              <h2>email: {user?.email}</h2>
+            </div>
+          </>
         )}
       </div>
     </div>

@@ -46,8 +46,12 @@ function Navbar({ isLoggedIn, setIsLoggedIn, user }) {
         >
           <LoginPage setIsOpened={setIsOpened} setIsLoggedIn={setIsLoggedIn} />
           <p className={styles.links}>
-            Don't have an account?{" "}
-            <Link to="/register" onClick={() => setIsOpened(false)}>
+            Don't have an account?
+            <Link
+              style={{ color: "lightblue" }}
+              to="/register"
+              onClick={() => setIsOpened(false)}
+            >
               Register Here
             </Link>
           </p>

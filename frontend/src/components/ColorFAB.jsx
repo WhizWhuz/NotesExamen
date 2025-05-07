@@ -16,6 +16,7 @@ function ColorFAB({ onSelectColor }) {
 
   const handleColorClick = (color) => {
     clickSound.currentTime = 0;
+    clickSound.volume = 0.1;
     clickSound.play();
     onSelectColor(color);
   };
@@ -26,6 +27,7 @@ function ColorFAB({ onSelectColor }) {
         whileTap={{ scale: 0.9, rotate: 90 }}
         onClick={() => {
           swooshSound.currentTime = 0;
+          swooshSound.volume = 0.1;
           swooshSound.play();
           toggleFAB();
         }}

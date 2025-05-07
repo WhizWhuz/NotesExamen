@@ -1,37 +1,85 @@
 .recentContainer {
-  height: 100%;
   display: flex;
   align-items: center;
   gap: 0.3em;
+  transition: 2s;
 }
 
 .recentNotes {
   width: 13em;
-  height: 100%;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.296);
   border-radius: 1em;
+  overflow: hidden;
+  height: 100%;
+  box-shadow: 3px 3px 5px #00000063;
+}
+
+.edit {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.editInput {
+  text-align: center;
+  width: 100%;
+  height: 2em;
+  font-family: inherit;
+  font-size: 1em;
+  border: none;
+  background-color: #00000015;
+  color: #000000;
+}
+
+.editTextarea {
+  text-align: center;
+  width: 100%;
+  height: 55%;
+  font-family: inherit;
+  font-size: 1em;
+  border: none;
+  background-color: #ffffff00;
+  color: #000000;
+}
+
+.yes {
+  background-color: rgb(17, 184, 17);
+}
+
+.no {
+  background-color: red;
+}
+
+.editTextarea {
+  resize: vertical;
+  min-height: 5em;
 }
 
 .titleContainer {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.15);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 2em;
-  align-items: center;
-  overflow: hidden;
   button {
     background-color: rgba(255, 255, 255, 0);
     padding: 0;
-    padding-block: 0px;
-    padding-inline: 0px;
-    position: absolute;
+    //   padding-block: 0px;
+    //   padding-inline: 0px;
+    //   position: relative;
+    //   align-self: flex-start;
+    //   top: 8%;
+    //   right: -10%;
   }
 }
 
+// .bin {
+//   align-self: flex-end;
+//   position: absolute;
+// }
+
 .contentContainer {
   display: flex;
-  height: 100%;
   margin-left: 0.3em;
   border-radius: 1em;
 }

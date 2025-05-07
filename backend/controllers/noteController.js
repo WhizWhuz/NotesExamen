@@ -1,8 +1,8 @@
 const Note = require("../models/Note");
 
-// POST - Create a note
-exports.createNote = async (req, res) => {
-  const { title, content, color } = req.body;
+////////*---POST - Create a note---\\\\\\\\
+  exports.createNote = async (req, res) => {
+    const { title, content, color } = req.body;
 
   try {
     const note = await Note.create({
@@ -18,7 +18,7 @@ exports.createNote = async (req, res) => {
   }
 };
 
-// GET - Show all notes from a logged in user
+////////*---GET - Show all notes from a logged in user---\\\\\\\\
 exports.getAllNotes = async (req, res) => {
   try {
     const notes = await Note.find({ user: req.user?.id || "dummy" }).sort({
@@ -32,17 +32,17 @@ exports.getAllNotes = async (req, res) => {
   }
 };
 
-// PUT - Update note
+////////*---PUT - Update note---\\\\\\\\
 exports.updateNote = async (req, res) => {
   const { id } = req.params;
   const { title, content } = req.body;
 
   try {
-    const note = await Note.findOneAndUpdate(
-      { _id: id, user: req.user.id },
-      { title, content },
-      { new: true }
-    );
+      const note = await Note.findOneAndUpdate(
+        { _id: id, user: req.user.id },
+        { title, content },
+        { new: true }
+      );
 
     if (!note) return res.status(404).json({ message: "Note not found!" });
 
@@ -53,7 +53,7 @@ exports.updateNote = async (req, res) => {
       .json({ message: "Failed to update note.", error: err.message });
   }
 };
-
+////////*---DELETE - Delete Note---\\\\\\\\
 exports.deleteNote = async (req, res) => {
   const { id } = req.params;
 
@@ -73,7 +73,7 @@ exports.deleteNote = async (req, res) => {
   }
 };
 
-// GET - Single note by ID
+////////*---GET - Single note by ID---\\\\\\\\
 exports.getNoteById = async (req, res) => {
   const { id } = req.params;
 

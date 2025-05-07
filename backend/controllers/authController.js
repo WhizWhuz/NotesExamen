@@ -1,8 +1,8 @@
-  const User = require("../models/User");
+const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// POST - Register User
+////////*---POST - Register User---*\\\\\\\\
 exports.register = async (req, res) => {
   const { email, password, name } = req.body;
 
@@ -18,7 +18,11 @@ exports.register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const user = await User.create({ name, email, password: hashedPassword });
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
     const token = jwt.sign(
       { id: user._id, role: user.role },
@@ -47,7 +51,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// POST - Login
+////////*---POST - Login---*\\\\\\\\
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -80,7 +84,7 @@ exports.login = async (req, res) => {
   }
 };
 
-// GET - Current User
+////////*---GET - Current User---*\\\\\\\\
 exports.getCurrentUser = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("name email");

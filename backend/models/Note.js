@@ -5,14 +5,14 @@ const noteSchema = new mongoose.Schema(
     title: {
       type: String,
       required: [true, "Notes must have a title."],
-      maxlength: [25, "Title cannot be more than 50 words"],
+      maxlength: [15, "Title cannot be more than 15 words"],
     },
     content: {
       type: String,
       required: [true, "Notes cannot be empty."],
       maxlength: [250, "Notes cannot be more than 250 characters"],
     },
-    tags: [String],
+    // tags: [String],
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
